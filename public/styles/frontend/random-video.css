@@ -1,0 +1,118 @@
+/* public/styles/frontend/random-video.css */
+
+
+.random-video{
+    display: grid;
+    grid-template-columns: calc(33.33% - 6.66px) calc(33.33% - 6.66px) 
+    calc(33.33% - 6.66px);
+    grid-gap: 10px;
+    padding: 10px 0;
+}
+
+.random-video .wrapper{
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    position: relative;
+    padding-top: 53.4%;
+}
+
+.random-video a{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-top: 53.4%;
+}
+
+.random-video a:hover{
+    cursor: pointer;
+}
+
+.random-video a img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.random-video a p{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--background-dark);
+    color: white;
+    text-align: center;
+    width: 60px;
+}
+
+.random-video .latest-video{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    color: white;
+}
+
+.random-video .channel-logo img{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6%;
+}
+
+.random-video .play-all{
+    position: relative;
+    bottom: 10px;
+    text-align: center;
+    visibility: hidden;
+}
+
+.random-video .play-all a{
+    color: var(--foreground);
+}
+
+.random-video .play-all:hover{
+    cursor: pointer;
+}
+
+.random-video .wrapper:hover .play-all{
+    visibility: visible;
+}
+
+.random-video .wrapper #player{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.random-book a img{
+    width: 100%;
+    float: left;
+}
+
+.random-button{
+    text-align: center;
+    padding: 15px 0 10px;
+}
+
+.random-button img{
+    height: 35px;
+}
+
+.random-button img:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+
+@media only screen and (max-width: 600px){
+    .random-video{
+        grid-template-columns: 100%;
+        padding: 15px;
+    }
+
+    .random-video .wrapper{
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+}

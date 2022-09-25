@@ -1,0 +1,29 @@
+/* public/styles/frontend/user.css */
+
+.User .main{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-gap: 15px;
+}
+
+.User .main .content,
+.User .main .sidebar{
+    background-color: var(--background-light);
+    padding: 20px;
+}
+
+.User .main .content .title{
+    font: 20px/1.5 Oswald, Bayon;
+    padding-bottom: 20px;
+}
+
+.User .main .content .date{
+    padding-bottom: 30px;
+}
+
+@media screen and (max-width: 600px){
+    .User .main{
+        grid-template-columns: 100%;
+    }
+}

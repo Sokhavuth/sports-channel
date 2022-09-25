@@ -1,0 +1,22 @@
+/* public/styles/backend/user.css */
+
+.User form input,
+.User form select{
+    font: var(--body-font);
+    width: 100%;
+    padding: 1px 5px;
+}
+
+.User form .ck-editor__editable{
+    min-height: 370px;
+    color: black;
+}
+
+.User form .wrapper{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+}
+
+.User form .info{
+    text-align: center;
+}

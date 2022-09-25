@@ -1,0 +1,17 @@
+<!--views/backend/admin.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/admin.css" />
+
+<section class="Admin">
+    <div class="inner region">
+        <div class="title">Log into the dashboard</div>
+        <form action="/admin" method="post">
+            <a>Email:</a><input type="email" name="email" value="guest@khmerweb.app"
+            required placeholder="Email" />
+            <a>Password:</a><input type="password" value="dpvumwtdpbxd" 
+            name="password" required />
+            <a></a><input type="submit" value="Submit" />
+            <a></a><div class="info"><%= data.message %></div>
+        </form>
+    </div>
+</section>

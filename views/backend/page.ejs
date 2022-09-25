@@ -1,0 +1,31 @@
+<!--views/backend/page.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/page.css" />
+<script src="/scripts/ckeditor/ckeditor.js"></script>
+
+<section class="Page">
+    <% if(data.item){ %>
+    <form action="/admin/page/edit/<%= data.item.key %>" method="post">
+        <input type="text" name="title" value="<%= data.item.title %>"
+        required placeholder="Title" />
+        <textarea name="content" id="editor"><%= data.item.content %></textarea>
+        <div class="wrapper"> 
+            <input type="text" name="thumb" value="<%= data.item.thumb %>"
+            required placeholder="Thumbnail" />
+            <input type="datetime-local" name="datetime" value="<%= data.item.date %>" required />
+            <input type="submit" value="Publish" />
+        </div>
+    </form>
+    <% }else{ %>
+    <form action="/admin/page" method="post">
+        <input type="text" name="title" required placeholder="Title" />
+        <textarea name="content" id="editor"></textarea>
+        <div class="wrapper"> 
+            <input type="text" name="thumb" required placeholder="Thumbnail" />
+            <input type="datetime-local" name="datetime" required />
+            <input type="submit" value="Publish" />
+        </div>
+    </form>
+    <% } %>
+    <script src="/scripts/ckeditor/config.js"></script>
+</section>

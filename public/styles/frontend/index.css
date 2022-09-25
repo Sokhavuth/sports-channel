@@ -1,0 +1,60 @@
+/* public/styles/index.css */
+
+.Index header{
+    background-color: var(--background-dark);
+}
+
+.Index header .inner{
+    display: grid;
+    grid-template-columns: 33% auto 25%;
+    align-items: center;
+    padding: 15px 0;
+    color: var(--foreground);
+}
+
+.Index header .inner a{
+    color: var(--foreground);
+}
+
+.Index header .inner .logo{
+    text-align: left;
+    font: 35px/1.5 StardosStencil, Bayon;
+}
+
+.Index header .inner form{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+
+.Index header .inner form input{
+    font: var(--bordy-font);
+    padding: 1px 5px;
+}
+
+.Index header .inner .login{
+    text-align: right;
+}
+
+.Index footer{
+    text-align: center;
+    padding: 50px 0;
+}
+
+@media only screen and (max-width: 600px){
+    .Index header .top-header{
+        padding: 5px 10px;
+    }
+
+    .Index header .inner{
+        grid-template-columns: 100%;
+        padding: 10px;
+    }
+
+    .Index header .inner .date{
+        text-align: center;
+    }
+
+    .Index header .inner form{
+        padding-top: 10px;
+    }
+}

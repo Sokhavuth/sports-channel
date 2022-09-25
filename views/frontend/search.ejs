@@ -1,0 +1,31 @@
+<!--views/frontend/search.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/search.css" />
+
+<section class="Search">
+    <div class="main">
+        <div class="content">
+            <% if(data.searchResult){ %>
+                <ul>
+                <% for(let item of data.searchResult){ %>
+                    <li>
+                        <a class="thumb" href="/<%= data.type %>/<%= item.key %>">
+                            <img src="<%= item.thumb %>" />
+                            <% if(item.videos){ %>
+                                <% if((item.videos !== "")&&(item.videos !== "[]")){ %>
+                                    <img class="play-icon" src="/images/play.png" />
+                                <% } %>
+                            <% } %>
+                        </a>
+                        <div class="title">
+                            <a href="/<%= data.type %>/<%= item.key %>"><%= item.title %></a>
+                            <div><%= (new Date(item.date)).toLocaleDateString("it-It") %></div>
+                        </div>
+                    </li>
+                <% } %>
+                </ul>
+            <% } %>
+        </div>
+        <div class="sidebar"><%- include("./sidebar") %></div>
+    </div>
+</section>

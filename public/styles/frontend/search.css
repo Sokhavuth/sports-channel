@@ -1,0 +1,78 @@
+/* public/styles/frontend/search.css */
+
+.Search .main{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 70% auto;
+    grid-gap: 15px;
+}
+
+.Search .main .sidebar{
+    background-color: var(--background-light);
+    padding: 20px;
+}
+
+.Search ul li{
+    display: grid;
+    grid-template-columns: 20% 60% auto;
+    grid-gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: var(--background-light);
+}
+
+.Search ul li:last-child{
+    margin-bottom: 0;
+}
+
+.Search ul li a{
+    position: relative;
+    padding-top: 56.25%;
+}
+
+.Search ul li .thumb img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+.Search ul li .thumb .play-icon{
+    position: absolute;
+    width: 25%;
+    min-height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Search ul li .title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--link);
+}
+
+.Search ul li .title a{
+    font: 16px/1.5 Oswald, Bayon;
+}
+
+.Search ul li .edit{
+    text-align: right;
+}
+
+.Search ul li .edit img{
+    width: 50px;
+    visibility: hidden;
+}
+
+.Search ul li:hover .edit img{
+    visibility: visible;
+}
+
+@media screen and (max-width: 600px){
+    .Search .main{
+        grid-template-columns: 100%;
+    }
+}

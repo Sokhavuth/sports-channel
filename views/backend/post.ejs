@@ -1,0 +1,104 @@
+<!--views/backend/post.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/post.css" />
+<script src="/scripts/ckeditor/ckeditor.js"></script>
+<script src="/scripts/backend/addCategory.js"></script>
+<script src="/scripts/backend/video.js"></script>
+
+<section class="Post">
+    <% if(data.item){ %>
+    <form action="/admin/post/edit/<%= data.item.key %>" method="post" name="form" 
+    onSubmit="submitForm(event)">
+        <input type="text" name="title" value="<%= data.item.title %>"
+        required placeholder="Title" />
+        <textarea name="content" id="editor"><%= data.item.content %></textarea>
+        <input type="text" name="categories" value="<%= data.item.categories.toString() %>"
+        required placeholder="Categories" />
+        <div class="wrapper"> 
+            <select id="category" onChange="getCategory()">
+                <option>Select a category</option>
+                <% for(let category of data.categories){ %>
+                <option><%= category.title %></option>
+                <% } %>
+            </select>
+            <input type="text" name="thumb" value="<%= data.item.thumb %>"
+            required placeholder="Thumbnail" />
+            <input type="datetime-local" name="datetime" value="<%= data.item.date %>" 
+            required />
+            <input type="submit" value="Publish" />
+            <input type="hidden" name="videos" value="<%= data.item.videos %>" />
+        </div>
+    </form>
+    <% }else{ %>
+    <form action="/admin/post" method="post" name="form" onSubmit="submitForm(event)">
+        <input type="text" name="title" required placeholder="Title" />
+        <textarea name="content" id="editor"></textarea>
+        <input type="text" name="categories" required placeholder="Categories" />
+        <div class="wrapper"> 
+            <select id="category" onChange="getCategory()">
+                <option>Select a category</option>
+                <% for(let category of data.categories){ %>
+                <option><%= category.title %></option>
+                <% } %>
+            </select>
+            <input type="text" name="thumb" required placeholder="Thumbnail" />
+            <input type="datetime-local" name="datetime" required />
+            <input type="submit" value="Publish" />
+            <input type="hidden" name="videos" value="" />
+        </div>
+    </form>
+    <% } %>
+
+    <div class='form'>
+        <select name='type'>
+            <option>YouTube</option>
+            <option>YouTubePlaylist</option>
+            <option>Facebook</option>
+            <option>OK</option>
+            <option>Dailymotion</option>
+            <option>Vimeo</option>
+        </select>
+        <input name='videoid' type='text' placeholder="Video ID" required />
+        <select name='status'>
+            <option>End</option>
+            <option>Continue</option>
+            <option>~ End</option>
+        </select>
+        <input onclick='genJson()' type="button" value="Insert video" />
+    </div>
+
+    <div class='viddata'>
+        <div></div>
+    </div>
+    <% if(data.item){ %>
+    <script>
+    let is_video = null
+    is_video = JSON.parse('<%- data.item.videos %>')
+  
+    if((is_video !== '') && (is_video !== '[]')){
+        let html = ''
+        let episode = is_video.length
+      
+        for(let video of is_video){
+            html += "<div>"
+            html += '<input value="'+video.type+'" required />'
+            html += '<input value="'+video.id+'" required />'
+            html += '<input value="'+video.status+'" required />'
+            html += '<p title="Delete" onClick="deleteRow(event)" class="episode">'+(episode--)+'</p>'
+            html += "</div>"
+        }
+  
+        if($('.viddata div').html() === ''){
+          $('.viddata div').append('<b>Video type</b>')
+          $('.viddata div').append('<b>Video id</b>')
+          $('.viddata div').append('<b>Status</b>')
+          $('.viddata div').append('<b>Part/Delete</b>')
+        }
+      
+        $('.viddata div:eq(0)' ).after(html)
+    }
+    </script>
+    <% } %>
+
+    <script src="/scripts/ckeditor/config.js"></script>
+</section>

@@ -1,0 +1,22 @@
+/* public/styles/backend/upload.css */
+
+.content{
+    background-color: var(--background-light);
+    padding: 20px;
+}
+.Upload form{
+    display: grid;
+    grid-template-columns: 50%;
+    grid-gap: 5px;
+    align-items: center;
+}
+
+.Upload form input{
+    width: 100%;
+    padding: 5px;
+}
+
+.Upload form input[type="file"]{
+    background-color: white;
+    color: black;
+}

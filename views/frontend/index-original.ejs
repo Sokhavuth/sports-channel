@@ -1,0 +1,93 @@
+<!--views/frontend/home.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/index.css" />
+
+<section class="Index">
+    <header>
+        <div class="inner region">
+            <a href="/" class="logo"><%= data.siteTitle %></a>
+            <form action="/search" method="post">
+                <input type="text" required name="q" 
+                placeholder="Type your word here..." />
+                <input type="submit" value="Search" />
+            </form>
+            <div class="login">
+                <a href="/admin">Login</a> | <a href="#register">Register</a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/styles/frontend/menu.css" />
+        <%
+        let home = ''
+        let news = ''
+        let movie = ''
+        let contact = ''
+        let about = ''
+
+        if(data.route === '/'){
+            home = 'active'
+        }else if(data.type === "News"){
+            news = 'active'
+        }else if(data.type === "Movie"){
+            movie = "active"
+        }else if(data.route === '/page/1oriwstnm41i'){
+            contact = 'active'
+        }else if(data.route === '/page/wrwkirgdwbbv'){
+            about = 'active'
+        }
+        %>
+        <div class="wrapper region">
+            <div class="topnav" id="myTopnav">
+                <a href="/" class="home <%= home %>">Home</a>
+                <a href="/category/News" class="news <%= news %>">News</a>
+                <a href="/category/Movie" class="movie <%= movie %>">Movie</a>
+                <a href="/page/1oriwstnm41i" class="contact <%= contact %>">Contact</a>
+                <a href="/page/wrwkirgdwbbv" class="about <%= about %>">About</a>
+                <a href="/admin">Login</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+            x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+    </script>
+    <div class="main region">
+        <% if(data.route === "/"){ %>
+            <%- include("./home") %>
+        <% }else if(data.route === "/post"){ %>
+            <%- include("./post") %>
+        <%} else if(data.route.includes("/page")){ %>
+            <%- include("./page") %>
+        <% }else if(data.route === "/user"){ %>
+            <%- include("./user") %>
+        <% }else if(data.route === "/category"){ %>
+            <%- include("./category") -%>
+        <% }else if(data.route === "/search"){ %>
+            <%- include("./search") %>
+        <% } %>
+            
+            
+    </div>
+
+    <div class="random-book-wrapper">
+        
+    </div>
+
+    <footer class="footer region">
+        <a href="https://khmerweb.deta.dev/">
+            &copy; 2022 Apsara Templates
+        </a>
+    </footer>
+</section>

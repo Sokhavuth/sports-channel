@@ -1,0 +1,23 @@
+/* public/styles/backend/category.css */
+
+.content{
+    background-color: var(--background-light);
+    padding: 20px;
+}
+
+.Category form{
+    width: 60%;
+    display: grid;
+    grid-template-columns: auto 80%;
+    grid-gap: 5px;
+    align-items: center;
+}
+
+.Category form span{
+    text-align: right;
+}
+
+.Category form input{
+    font: var(--body-font);
+    padding: 1px 5px;
+}

@@ -1,0 +1,23 @@
+/* public/styles/backend/setting.css */
+
+.content{
+    background-color: var(--background-light);
+    padding: 20px;
+}
+
+.Setting form{
+    width: 70%;
+    display: grid;
+    grid-template-columns: auto 70%;
+    grid-gap: 5px;
+    align-items: center;
+}
+
+.Setting form span{
+    text-align: right;
+}
+
+.Setting form input{
+    font: var(--body-font);
+    padding: 1px 5px;
+}

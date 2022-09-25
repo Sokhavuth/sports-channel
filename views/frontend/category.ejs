@@ -1,0 +1,38 @@
+<!--views/frontend/category.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/category.css" />
+<script src="/scripts/paginate_category.js"></script>
+
+<section class="Category">
+    <% if(data.items){ %>
+    <div class="inner region">
+        <% for(let post of data.items){ %>
+            <div class="thumb">
+                <a class="wrapper" href="/post/<%= post.key %>">
+                    <img src="<%= post.thumb %>" />
+                    <% if(post.videos){ %>
+                        <% if((post.videos !== "")&&(post.videos !== "[]")){ %>
+                        <img class="play-icon" src="/images/play.png" />
+                        <% } %>
+                    <% } %>
+                </a>
+                <p class="date"><%= (new Date(post.date)).toLocaleDateString("it-IT") %></p>
+                <p class="title"><a href="/post/<%= post.key %>"><%= post.title %></a></p>
+            </div>
+        <% } %>
+    </div>
+    <div class="pagination">
+        <p>
+            <% if(data.count - data.categoryItemLimit === 1){ %>
+                1 more post
+            <% }else if(data.count - data.categoryItemLimit <= 0){ %>
+                no more post
+            <% }else{ %>
+                <%= data.count - data.categoryItemLimit %> more posts
+            <% } %>
+        </p>
+        <img class="load" onclick="paginate('<%= data.type %>')" 
+        src="/images/loadmore.png" />
+    </div>
+    <% } %>
+</section>

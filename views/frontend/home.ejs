@@ -1,0 +1,44 @@
+<!--views/frontend/home.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/home.css" />
+<script src="/scripts/paginate.js"></script>
+
+<div class="feature-post">
+    <%- include("./random-video") %>
+</div>
+
+<div class="front-ad">
+    <img src="/images/donate-ad.jpg" />
+    <img src="/images/donate-ad.jpg" />
+</div>
+
+<% if(data.latestPosts){ %>
+<div class="Post">
+    <% for(let post of data.latestPosts){ %>
+        <div class="thumb">
+            <a class="wrapper" href="/post/<%= post.key %>">
+                <img src="<%= post.thumb %>" />
+                <% if(post.videos){ %>
+                    <% if((post.videos !== "")&&(post.videos !== "[]")){ %>
+                    <img class="play-icon" src="/images/play.png" />
+                    <% } %>
+                <% } %>
+            </a>
+            <p class="date"><%= (new Date(post.date)).toLocaleDateString("it-IT") %></p>
+            <p class="title"><a href="/post/<%= post.key %>"><%= post.title %></a></p>
+        </div>
+    <% } %>
+</div>
+<div class="pagination">
+    <p>
+        <% if(data.count - data.fpostLimit === 1){ %>
+            1 more post
+        <% }else if(data.count - data.fpostLimit <= 0){ %>
+            no more post
+        <% }else{ %>
+            <%= data.count - data.fpostLimit %> more posts
+        <% } %>
+    </p>
+    <img class="load" onclick="paginate()" src="/images/loadmore.png" />
+</div>
+<% } %>

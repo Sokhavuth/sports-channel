@@ -1,0 +1,17 @@
+/* public/styles/backend/page.css */
+
+.Page form input{
+    font: var(--body-font);
+    width: 100%;
+    padding: 1px 5px;
+}
+
+.Page form .ck-editor__editable{
+    min-height: 370px;
+    color: black;
+}
+
+.Page form .wrapper{
+    display: grid;
+    grid-template-columns: 40% 40% auto;
+}

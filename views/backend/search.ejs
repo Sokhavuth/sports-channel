@@ -1,0 +1,41 @@
+<!--views/backend/search.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/search.css" />
+
+<section class="Search">
+    <% if(data.searchResult){ %>
+        <ul>
+        <% for(let item of data.searchResult){ %>
+            <li>
+                <a class="thumb" href="/<%= data.type %>/<%= item.key %>">
+                    <img src="<%= item.thumb %>" />
+                    <% if(item.videos){ %>
+                        <% if((item.videos !== "")&&(item.videos !== "[]")){ %>
+                            <img class="play-icon" src="/images/play.png" />
+                        <% } %>
+                    <% } %>
+                </a>
+                <div class="title">
+                    <a href="/<%= data.type %>/<%= item.key %>"><%= item.title %></a>
+                    <div><%= (new Date(item.date)).toLocaleDateString("it-It") %></div>
+                </div>
+                <div class="edit">
+                    <a href="/admin/<%= data.type %>/edit/<%= item.key %>">
+                        <img src="/images/edit.png" />
+                    </a>
+                    <a href="/admin/<%= data.type %>/delete/<%= item.key %>">
+                        <img src="/images/delete.png" />
+                    </a>
+                </div>
+            </li>
+        <% } %>
+        </ul>
+        <% if(data.type === "user"){ %>
+            <script>
+            $('.Search ul li').css({'grid-template-columns':'10% auto 25%'})
+            $('.Search ul li .thumb').css({'padding-top':'100%'})
+            $('.Search ul li .thumb img').css({'border-radius':'50%'})
+            </script>
+        <% } %>
+    <% } %>
+</section>

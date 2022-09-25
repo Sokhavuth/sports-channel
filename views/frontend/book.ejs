@@ -1,0 +1,134 @@
+<!--views/frontend/book.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/book.css" />
+<script src="/scripts/setplayer.js"></script>
+<link rel="stylesheet" href="/styles/highlight/stackoverflow-dark.css" />
+<script src="/scripts/highlight/highlight.pack.js"></script>
+<script src="/scripts/highlight/line_number.js"></script>
+
+<script>hljs.highlightAll();hljs.initLineNumbersOnLoad()</script>
+
+<section class="Book">
+    <div class="main">
+        <div class="sidebar">
+            <div class="table-content">
+                <div class="title">
+                    <%= data.item.bookTitle %>
+                </div>
+                <div class='chapter-wrapper'>
+                    <% 
+                    let artiNumber = 0
+                    let prevChapter = false
+                    let chapNumber = 0
+                    let index = 0
+                    %>
+                    <% for(let item of data.articles){ %>
+                        <% if((!prevChapter)||(item.chapter !== prevChapter)){ %>
+                        <ol class='chapter' start='<%= chapNumber+1 %>'>
+                            <li>
+                            <%= item.chapter %>
+                            <% prevChapter = item.chapter %>
+                            </li>
+                        </ol>
+                        <% 
+                        artiNumber = 0 
+                        chapNumber += 1
+                        %>
+                        <% } %>
+    
+                        <ol class='article' start='<%= artiNumber+1 %>' >
+                            <li id="<%= item.key %>">
+                                <a href="/book/<%= item.key %>">
+                                    <%= item.title %>
+                                </a>
+                            </li>
+                            <% if(data.item.key === item.key){ %>
+                                <script>
+                                $("#<%= item.key %> a").css('color','var(--link)')
+                                $("#<%= item.key %>").css('color','var(--link)')
+                                
+                                $("#<%= item.key %>")[0].scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "center"
+                                })
+                                </script>
+                            <% } %>
+                        </ol>
+                        <% artiNumber += 1 %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+        <% if(data.item){ %>
+            <div class="title"><%= data.item.title %></div>
+            <div class="category">
+                <%= data.item.categories.toString() %>
+                <div class="fb-share-button" data-href="https://khmerweb-apsara-book.deta.dev/book/<%= data.item.key %>" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fkhmerweb-apsara-book.deta.dev%2Fbook%2F<%= data.item.key %>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="date">
+                <%= new Date(data.item.date).toLocaleDateString("it-IT") %>
+            </div>
+            <div class="post-ad">
+                <img src="/images/donate-ad.jpg" />
+            </div>
+            <% if(data.item.videos){ %>
+            <% if((data.item.videos !== '')&&(data.item.videos !== '[]')){ %>
+                <div class="video">
+                    <div class="screen"></div>
+                    <div class="playlist"></div>
+                </div>
+                <script>
+                    const videos = JSON.parse('<%- data.item.videos %>')
+                    videos.reverse()
+                    
+                    let clicked = 0
+                    
+                    for(let index in videos){
+                        let ending = ''
+                        if(index == videos.length-1){
+                            ending = videos[index].status
+                        }
+
+                        let title = videos[index].title
+                        
+                        let result = '<div id="part'+index+'" class="part" onClick="setScreen(videos['+index+'],'+index+',true)">videoTitle part '+(++index)+' '+ending+'</div>'
+                        let html = result.replace("videoTitle", "<%= data.item.title %>")
+                        $('.playlist').append(html)
+                    }
+
+                    setScreen(videos[0],0,false)
+                </script>
+            <% } %>
+            <% } %>
+            <div class="text-content">
+                <%- data.item.content %>
+            </div>
+            <div class="post-ad">
+                <img src="/images/front-ad.png" />
+            </div>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                this.page.url = "https://khmerweb-apsara-book.deta.dev/book/<%= data.item.key %>";  
+                this.page.identifier = "<%= data.item.key %>"; 
+                };
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://apsara-book.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the 
+                <a href="https://disqus.com/?ref_noscript">
+                    comments powered by Disqus.
+                </a>
+            </noscript>
+        <% } %>
+        </div>
+        
+    </div>
+</section>

@@ -1,0 +1,45 @@
+/* public/styles/backend/book.css */
+
+.Book form input,
+.Book form select,
+.Book .form input,
+.Book .form select{
+    font: var(--body-font);
+    width: 100%;
+    padding: 1px 5px;
+}
+
+.Book form .ck-editor__editable{
+    min-height: 285px;
+    color: black;
+}
+
+.Book form .wrapper,
+.Book .form, 
+.Book .viddata div{
+    display: grid;
+    grid-template-columns: 20% 32.5% 32.5% 15%;
+}
+
+.Book .viddata div{
+    width: 100%;
+}
+
+.Book .viddata div p:hover{
+    cursor: pointer;
+    color: red;
+}
+
+.Book .viddata b,
+.Book .viddata input,
+.Book .viddata p{
+    font: var(--body-font);
+    padding: 5px;
+    background: lightgrey;
+    border: 1px solid grey;
+    text-align: center;
+}
+
+.Book .viddata input{
+    background: white;
+}

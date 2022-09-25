@@ -1,0 +1,155 @@
+/* public/styles/frontend/Book.css */
+
+.Book .main{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: auto 67%;
+    grid-gap: 15px;
+}
+
+.Book .main .content,
+.Book .main .sidebar{
+    background-color: var(--background-light);
+    padding: 20px;
+}
+
+.Book .sidebar .chapter-wrapper{
+    max-height: 450px;
+    overflow: auto;
+}
+
+.Book .sidebar .table-content .title{
+    font: 20px/1.5 OswaldBold, Koulen;
+    margin-bottom: 30px;
+    color: darkgreen;
+}
+
+.Book .sidebar .table-content .chapter li{
+    list-style-position: inside;
+    list-style-type: upper-alpha;
+    font: 18px/1.5 OswaldBold, Bayon;
+    padding-top: 10px;
+} 
+
+.Book .sidebar .table-content .article li{
+    padding-left: 15px;
+    list-style-type: decimal;
+    font: italic 16px/1.75 StardosStencil, Limonf3;
+    list-style-position: inside;
+}
+
+.Book .sidebar .table-content .article li a{
+    color: rgb(70, 70, 70);
+}
+
+.Book .main .content .title{
+    font: 20px/1.5 OswaldBold, Bayon;
+    padding-bottom: 20px;
+}
+
+.Book .main .content .category .fb-share-button,
+.Book .main .content .category .twitter-share-button{
+    float: right;
+}
+
+.Book .main .content .category .fb_iframe_widget span {
+    vertical-align: baseline !important;
+    margin-left: 5px;
+}
+
+.Book .main .content .date{
+    padding-bottom: 30px;
+}
+
+.Book .main .content .post-ad img{
+    width: 100%;
+}
+
+.Book .main .content .video{
+    background: lavender;
+}
+
+.Book .main .content .video .screen div{
+    position: relative;
+    padding-top: 56.25%;
+    border: 1px solid white;
+    border-bottom: none;
+}
+
+.Book .main .content .video .screen div iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.Book .main .content .video .playlist{
+    max-height: 405px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.Book .main .content .video .playlist .part{
+    text-align: left;
+    padding: 10px;
+    color: black;
+    display: block;
+    height: auto;
+    font-size: 16px;
+    background: var(--background-dark);
+    border: 1px solid white;
+    border-bottom: none;
+}
+
+.Book .main .content .video .playlist .part:last-child{
+    margin-bottom: 1px solid white;
+}
+
+.Book .main .content .video .playlist .part:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+
+.Book .main .content pre code{
+    font: 14px/1.5  Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace, Nokora;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.hljs-ln-numbers {
+    text-align: center;
+    color: #ccc;
+    vertical-align: top;
+    padding-right: 5px;
+}
+
+.hljs-ln-n{
+    padding-right: 10px;
+}
+
+.hljs-ln-code {
+    padding-left: 1em;
+}
+
+blockquote{
+  width:100%;
+  font-style:italic;
+  padding:20px;
+  border-left:8px solid #78C0A8 ;
+  background: rgb(228, 228, 228);
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
+@media screen and (max-width: 600px){
+    .Book .main{
+        grid-template-columns: 100%;
+    }
+}

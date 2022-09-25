@@ -1,0 +1,24 @@
+<!--views/backend/category.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/category.css" />
+
+<section class="Category">
+    <% if(data.item){ %>
+    <form action="/admin/category/edit/<%= data.item.key %>" method="post">
+        <span>Name:</span><input type="text" name="title" value="<%= data.item.title %>"
+        required placeholder="Name" />
+        <span>Thumbnail:</span><input type="text" name="thumb" value="<%= data.item.thumb %>"
+        required placeholder="Thumbnail" />
+        <span>Date:</span><input type="datetime-local" value="<%= data.item.date %>"
+        name="datetime" required />
+        <span></span><input type="submit" value="Submit" />
+    </form>
+    <% }else{ %>
+    <form action="/admin/category" method="post">
+        <span>Name:</span><input type="text" name="title" required placeholder="Name" />
+        <span>Thumbnail:</span><input type="text" name="thumb" required placeholder="Thumbnail" />
+        <span>Date:</span><input type="datetime-local" name="datetime" required />
+        <span></span><input type="submit" value="Submit" />
+    </form>
+    <% } %>
+</section>

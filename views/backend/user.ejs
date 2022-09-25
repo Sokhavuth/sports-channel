@@ -1,0 +1,50 @@
+<!--views/backend/user.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/user.css" />
+<script src="/scripts/ckeditor/ckeditor.js"></script>
+
+<section class="User">
+    <% if(data.item){ %>
+    <form action="/admin/user/edit/<%= data.item.key %>" method="post">
+        <input type="text" value="<%= data.item.title %>" name="title" 
+        required placeholder="Username" />
+        <textarea name="content" id="editor"><%= data.item.content %></textarea>
+        <div class="wrapper"> 
+            <select name="role" class="role">
+                <option>Author</option>
+                <option>Editor</option>
+                <option>Admin</option>
+                <option>Guest</option>
+            </select>
+            <script>$(".role").val("<%= data.item.role %>").change()</script>
+            <input type="email" name="email" value="<%= data.item.email %>"
+            required placeholder="Email" />
+            <input type="password" value="<%= data.item.password %>" name="password" required />
+            <input type="datetime-local" value="<%= data.item.date %>" name="datetime" required />
+            <input type="text" name="thumb" value="<%= data.item.thumb %>" 
+            required placeholder="Thumbnail" />
+            <input type="submit" value="Publish" />
+        </div>
+        <div class="info"><%= data.message %></div>
+    </form>
+    <% }else{ %>
+    <form action="/admin/user" method="post">
+        <input type="text" name="title" required placeholder="Username" />
+        <textarea name="content" id="editor"></textarea>
+        <div class="wrapper"> 
+            <select name="role" >
+                <option>Author</option>
+                <option>Editor</option>
+                <option>Admin</option>
+            </select>
+            <input type="email" name="email" required placeholder="Email" />
+            <input type="password" name="password" required />
+            <input type="datetime-local" name="datetime" required />
+            <input type="text" name="thumb" required placeholder="Thumbnail" />
+            <input type="submit" value="Publish" />
+        </div>
+        <div class="info"><%= data.message %></div>
+    </form>
+    <% } %>
+</section>
+<script src="/scripts/ckeditor/config.js"></script>

@@ -1,0 +1,123 @@
+<!--views/backend/index.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/index.css" />
+<script src="/scripts/backend/paginate.js"></script>
+
+<section class="Index">
+    <header>
+        <div class="inner region">
+            <div class="title"><%= data.pageTitle %></div>
+            <form action="/admin/search" method="post">
+                <select name="search_type">
+                    <option>posts</option>
+                    <option>categories</option>
+                    <option>users</option>
+                </select>
+                <input type="text" name="q" required placeholder="Type your word here..." />
+                <input type="submit" value="Search" />
+            </form>
+            <div class="logout">
+                <a><%= data.username %></a> | <a href="/">Home</a> | <a href="/admin/logout">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="main region">
+        <div class="sidebar">
+            <div class="inner">
+                <a href="/admin/post"><img src="/images/posting.png" /></a>
+                <div><a href="/admin/post">Post</a></div>
+
+                <a href="/admin/book"><img src="/images/book.png" /></a>
+                <div><a href="/admin/book">Book</a></div>
+
+                <a href="/admin/page"><img src="/images/page.png" /></a>
+                <div><a href="/admin/page">Page</a></div>
+
+                <a href="/admin/category"><img src="/images/category.png" /></a>
+                <div><a href="/admin/category">Category</a></div>
+
+                <a href="/admin/upload"><img src="/images/upload.png" /></a>
+                <div><a href="/admin/upload">Upload</a></div>
+
+                <a href="/admin/user"><img src="/images/users.png" /></a>
+                <div><a href="/admin/user">Users</a></div>
+
+                <a href="/admin/setting"><img src="/images/setting.png" /></a>
+                <div><a href="/admin/setting">Setting</a></div>
+            </div>
+        </div>
+        <div class="content">
+            <% if(data.route.includes("/post")){ %>
+                <%- include("./post.ejs") %>
+            <% }else if(data.route.includes("/page")){ %>
+                <%- include("./page.ejs") %>
+            <% }else if(data.route.includes("/book")){ %>
+                <%- include("./book.ejs") %>
+            <% }else if(data.route.includes("/category")){ %>
+                <%- include("./category.ejs") %>
+            <% }else if(data.route.includes("/upload")){ %>
+                <%- include("./upload.ejs") %>
+            <% }else if(data.route.includes("/user")){ %>
+                <%- include("./user.ejs") %>
+            <% }else if(data.route.includes("/setting")){ %>
+                <%- include("./setting.ejs") %>
+            <% }else if(data.route.includes("/search")){ %>
+                <%- include("./search.ejs") %>
+            <% } %>
+        </div>
+    </div>
+
+    <footer class="footer region">
+        <div class="info">Total number of items: <%= data.count %></div>
+        <ul>
+            <% if(data.items){ %>
+                <% for(let item of data.items){ %>
+                    <li>
+                        <a class="thumb" href="/<%= data.type %>/<%= item.key %>">
+                            <img src="<%= item.thumb %>" />
+                            <% if(item.videos){ %>
+                                <% if((item.videos !== "")&&(item.videos !== "[]")){ %>
+                                    <img class="play-icon" src="/images/play.png" />
+                                <% } %>
+                            <% } %>
+                        </a>
+                        <div class="container">
+                            <div class="title">
+                                <a href="/<%= data.type %>/<%= item.key %>">
+                                    <%= item.title %>
+                                </a>
+                            </div>
+                            <div class="date">
+                                <%= (new Date(item.date)).toLocaleDateString("it-IT") %>
+                            </div>
+                        </div>
+                        <div class="edit">
+                            <a href="/admin/<%= data.type %>/edit/<%= item.key %>">
+                                <img src="/images/edit.png" />
+                            </a>
+                            <a href="/admin/<%= data.type %>/delete/<%= item.key %>">
+                                <img src="/images/delete.png" />
+                            </a>
+                        </div>
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+
+        <% if(data.route === '/admin/user'){ %>
+            <script>
+            $('.footer ul li').css({'grid-template-columns':'13% auto 25%'})
+            $('.footer ul li .thumb').css({'padding-top':'100%'})
+            $('.footer ul li .thumb img').css({'border-radius':'50%'})
+            </script>
+        <% } %>
+
+        <div class="pagination">
+            <img onclick="paginate('<%= data.route %>')" src="/images/loadmore.png" />
+        </div>
+        <div class="credit">
+            <a href="https://khmerweb.deta.dev/">&copy; 2022 Apsara Templates </a>
+        </div>
+    </footer>
+</section>

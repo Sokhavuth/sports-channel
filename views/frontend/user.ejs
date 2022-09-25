@@ -1,0 +1,42 @@
+<!--views/frontend/user.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/user.css" />
+
+<section class="User">
+    <div class="main">
+        <div class="content">
+        <% if(data.item){ %>
+            <div class="title"><%= data.item.title %></div>
+            <div class="role">
+                <%= data.item.role %>
+            </div>
+            <div class="date">
+                <%= new Date(data.item.date).toLocaleDateString("it-IT") %>
+            </div>
+            
+            <div class="text-content">
+                <%- data.item.content %>
+            </div>
+            <div id="disqus_thread"></div>
+            <script>
+                var disqus_config = function () {
+                this.page.url = "https://bhj49r.deta.dev/user/<%= data.item.key %>";  
+                this.page.identifier = "<%= data.item.key %>"; 
+                };
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://tv-channel-2.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the 
+                <a href="https://disqus.com/?ref_noscript">
+                    comments powered by Disqus.
+                </a>
+            </noscript>
+        <% } %>
+        </div>
+        <div class="sidebar">Sidebar</div>
+    </div>
+</section>

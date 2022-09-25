@@ -1,0 +1,19 @@
+<!--views/backend/setting.ejs-->
+
+<link rel="stylesheet" href="/styles/backend/setting.css" />
+
+<section class="Setting">
+    <form action='/admin/setting/edit/<%= data.item.key %>' method='post' >
+        <span>Website title:</span><input type='text' value="<%= data.item.siteTitle %>"
+        name='siteTitle' required />
+        <span>Description:</span><input type='text' value="<%= data.item.description %>"
+        name='description' required />
+        <span>Dashboard item limit:</span><input type='number' value="<%= data.item.ditemLimit %>"
+        name='ditemLimit' required /> 
+        <span>Frontend item limit:</span><input type='number'  value="<%= data.item.fitemLimit %>"
+        name='fitemLimit' required /> 
+        <span>Front category limit:</span><input type='number' value="<%= data.item.categoryItemLimit %>"
+        name='categoryItemLimit' required /> 
+        <a></a><input type='submit' value='Submit' />
+    </form>
+</section>

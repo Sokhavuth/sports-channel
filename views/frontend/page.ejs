@@ -1,0 +1,17 @@
+<!--views/frontend/page.ejs-->
+
+<link rel="stylesheet" href="/styles/frontend/page.css" />
+
+<section class="Page">
+    <div class="main">
+        <div class="content">
+        <% if(data.item){ %>
+            <div class="title"><%= data.item.title %></div>
+            <div class="text-content">
+                <%- data.item.content %>
+            </div>
+        <% } %>
+        </div>
+        <div class="sidebar">Sidebar</div>
+    </div>
+</section>
