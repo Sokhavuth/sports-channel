@@ -2,10 +2,10 @@
 
 :root{
     --body-font: 14px/1.5 Vidaloka, OdorMeanChey;
-    --background-dark: #38448d;
-    --background: #5672b1;
-    --background-light: #ebf0ff;
-    --foreground: #f0a66a;
+    --background-dark: #08597d;
+    --background: #1799c6;
+    --background-light: #c1e5ef;
+    --body: #dcf1f7;
     --color: black;
     --link: #5672b1;
 }
@@ -31,7 +31,7 @@ a:hover{
 }
 
 body{
-    background: var(--backgound);
+    background: var(--body);
     font: var(--body-font);
     color: var(--color);
 }

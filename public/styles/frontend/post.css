@@ -27,7 +27,7 @@
 }
 
 .Post .main .content .video{
-    background: lavender;
+    background: var(--body);
 }
 
 .Post .main .content .video .screen div{
@@ -58,7 +58,7 @@
     display: block;
     height: auto;
     font-size: 16px;
-    background: rgb(208, 215, 233);
+    background: var(--body);
     border: 1px solid white;
     border-top: none;
 }

@@ -28,27 +28,45 @@ class Home{
 
         const amount = 50
         
-        const query_news = { "categories?contains": "News" }
-        let newsObj = await postdb.getPosts(req, amount, query_news)
-        this.shuffleArray(newsObj.posts)
-        setup.newsThumb = newsObj.posts[0].thumb
-        const news_videos = await this.generateVideos(newsObj.posts)
-        setup.news = JSON.stringify(news_videos)
+        const query_football = { "categories?contains": "Football" }
+        let footballObj = await postdb.getPosts(req, amount, query_football)
+        this.shuffleArray(footballObj.posts)
+        setup.footballThumb = footballObj.posts[0].thumb
+        const footballVideos = await this.generateVideos(footballObj.posts)
+        setup.football = JSON.stringify(footballVideos)
 
-        const query_movie = { "categories?contains": "Movie" }
-        let movieObj = await postdb.getPosts(req, amount, query_movie)
-        this.shuffleArray(movieObj.posts)
-        setup.movieThumb = movieObj.posts[0].thumb
-        const movie_videos = await this.generateVideos(movieObj.posts)
-        setup.movies = JSON.stringify(movie_videos)
-        
-        let postObj = await postdb.getPosts(req, amount)
-        setup.latestPosts = postObj.posts.slice(0, setup.fpostLimit)
-        const post_videos = await this.generateVideos(postObj.posts)
-        this.shuffleArray(post_videos)
-        setup.latestVideos = JSON.stringify(post_videos)
-        
-        setup.count = postObj.length
+        const query_volleyball = { "categories?contains": "Volleyball" }
+        let volleyballObj = await postdb.getPosts(req, amount, query_volleyball)
+        this.shuffleArray(volleyballObj.posts)
+        setup.volleyballThumb = volleyballObj.posts[0].thumb
+        const volleyballVideos = await this.generateVideos(volleyballObj.posts)
+        setup.volleyball = JSON.stringify(volleyballVideos)
+
+        const query_basketball = { "categories?contains": "Basketball" }
+        let basketballObj = await postdb.getPosts(req, amount, query_basketball)
+        this.shuffleArray(basketballObj.posts)
+        setup.basketballThumb = basketballObj.posts[0].thumb
+        const basketballVideos = await this.generateVideos(basketballObj.posts)
+        setup.basketball = JSON.stringify(basketballVideos)
+
+        const query_boxing = { "categories?contains": "Boxing" }
+        let boxingObj = await postdb.getPosts(req, amount, query_boxing)
+        this.shuffleArray(boxingObj.posts)
+        setup.boxingThumb = boxingObj.posts[0].thumb
+        const boxingVideos = await this.generateVideos(boxingObj.posts)
+        setup.boxing = JSON.stringify(boxingVideos)
+
+        const query_talbe_tennis = { "categories?contains": "Table Tennis" }
+        let table_tennisObj = await postdb.getPosts(req, amount, query_talbe_tennis)
+        this.shuffleArray(table_tennisObj.posts)
+        setup.tableTennisThumb = table_tennisObj.posts[0].thumb
+        const tableTennisVideos = await this.generateVideos(table_tennisObj.posts)
+        setup.tableTennis = JSON.stringify(tableTennisVideos)
+
+        let { posts, length} = await postdb.getPosts(req, setup.fpostLimit)
+        setup.latestPosts = posts
+        setup.count = length
+    
         setup.page = 1
 
         res.render("base", { data: setup })

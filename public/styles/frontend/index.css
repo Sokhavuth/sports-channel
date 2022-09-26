@@ -9,7 +9,7 @@
     grid-template-columns: 33% auto 25%;
     align-items: center;
     padding: 15px 0;
-    color: var(--foreground);
+    color: white;
 }
 
 .Index header .inner a{

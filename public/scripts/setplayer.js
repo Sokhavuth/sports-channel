@@ -28,7 +28,7 @@ function setScreen(video,id,click){
 
     if(click){
         $('.video .playlist #part'+clicked)
-            .css({'background':'rgb(208, 215, 233)', 'color': 'black'})
+            .css({'background':'var(--body)', 'color': 'black'})
     }
     $('.video .playlist #part'+id)
         .css({'background':'var(--link)', 'color': 'white'})

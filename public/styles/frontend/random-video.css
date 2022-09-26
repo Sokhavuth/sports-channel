@@ -42,7 +42,7 @@
     background: var(--background-dark);
     color: white;
     text-align: center;
-    width: 60px;
+    padding: 2px 5px;
 }
 
 .random-video .latest-video{
@@ -67,7 +67,7 @@
 }
 
 .random-video .play-all a{
-    color: var(--foreground);
+    color: orange;
 }
 
 .random-video .play-all:hover{

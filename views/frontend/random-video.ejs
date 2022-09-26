@@ -5,13 +5,31 @@
 
 <div class="random-video">
     <a>
-        <img onclick="changeCategory(latestNews, 'Latest news')" src="<%= data.newsThumb %>" />
-        <p class="news-label">News</p>
+        <img onclick="changeCategory(latestFootball, 'Latest Footballs')" 
+        src="<%= data.footballThumb %>" />
+        <p class="football-label">Football</p>
     </a>
     <a>
-        <img onclick="changeCategory(latestMovies, 'Latest movies')" src="<%= data.movieThumb %>" />
-        <p class="movies-label">Movies</p>
+        <img onclick="changeCategory(latestVolleyball, 'Latest Volleyballs')" 
+        src="<%= data.volleyballThumb %>" />
+        <p class="volleyball-label">Volleyball</p>
     </a>
+    <a>
+        <img onclick="changeCategory(latestTableTennis, 'Latest Table Tennis')" 
+        src="<%= data.tableTennisThumb %>" />
+        <p class="tableTennis-label">Table Tennis</p>
+    </a>
+    <a>
+        <img onclick="changeCategory(latestBoxing, 'Latest Boxings')" 
+        src="<%= data.boxingThumb %>" />
+        <p class="boxing-label">Boxing</p>
+    </a>
+    <a>
+        <img onclick="changeCategory(latestBasketball, 'Latest Basketballs')" 
+        src="<%= data.basketballThumb %>" />
+        <p class="basketball-label">Basketball</p>
+    </a>
+
     <div class="wrapper">
         <div id="player"></div>
         <div class="latest-video">Latest videos</div>
@@ -32,9 +50,14 @@
         }
     }
 
-    const latestNews = JSON.parse('<%- data.news %>')
-    const latestMovies = JSON.parse('<%- data.movies %>')
-    const latestVideos = JSON.parse('<%- data.latestVideos %>')
+    const latestFootball = JSON.parse('<%- data.football %>')
+    const latestVolleyball = JSON.parse('<%- data.volleyball %>')
+    const latestBasketball = JSON.parse('<%- data.basketball %>')
+    const latestBoxing = JSON.parse('<%- data.boxing %>')
+    const latestTableTennis = JSON.parse('<%- data.tableTennis %>')
+
+    const latestVideos = latestFootball.concat(latestVolleyball, latestBasketball, latestBoxing, latestTableTennis)
+    shuffleArray(latestVideos)
 
     var tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
