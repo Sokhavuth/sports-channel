@@ -41,13 +41,13 @@
 }
 
 @media only screen and (max-width: 600px){
-    .Index header .top-header{
-        padding: 5px 10px;
-    }
-
     .Index header .inner{
         grid-template-columns: 100%;
         padding: 10px;
+    }
+
+    .Index header .inner .logo{
+        text-align: center;
     }
 
     .Index header .inner .date{
